@@ -14,9 +14,9 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { Link } from "react-router"
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
 import Logo from "@/assets/icons/Logo"
 import { getSidebarItems } from "@/utils/getSidebarItem"
+import { useUserInfoQuery } from "@/redux/features/user/user.api"
 
 // This is sample data.
 // const data = {

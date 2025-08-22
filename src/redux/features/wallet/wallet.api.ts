@@ -13,35 +13,30 @@ export const walletApi = baseApi.injectEndpoints({
         }),
 
 
-        register: builder.mutation({
-            query: (userInfo) => ({
-                url: "/user/register",
+        withdraw: builder.mutation({
+            query: (withdrawData: { amount: number }) => ({
+                url: "/wallets/withdraw",
                 method: "POST",
-                data: userInfo
+                data: withdrawData
             })
         }),
 
 
-        userInfo: builder.query({
-            query: () => ({
-                url: "/user/me",
-                method: "GET",
-            }),
-            // transformResponse: (response: any) => response.data,
-            providesTags: ["USER"]
+        sendMoney: builder.mutation({
+            query: (sendMoneyData) => ({
+                url: "/wallets/send-money",
+                method: "POST",
+                data: sendMoneyData
+            })
         }),
 
 
-        logout: builder.mutation({
-            query: () => ({
-                url: "/auth/logout",
-                method: "POST"
-            }),
-            invalidatesTags: ["USER"]
-        }),
+
+
+
 
     })
 })
 
 
-export const { useDepositMutation, useRegisterMutation, useUserInfoQuery, useLogoutMutation } = walletApi;
+export const { useDepositMutation, useWithdrawMutation, useSendMoneyMutation } = walletApi;

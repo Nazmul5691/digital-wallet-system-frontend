@@ -49,7 +49,7 @@ export default function Deposit() {
 
             form.reset();
 
-            navigate('/dashboard');
+            navigate('/user/dashboard');
 
         } catch (error: any) {
             const errorMessage = error?.data?.message || "Failed to deposit money. Please try again.";

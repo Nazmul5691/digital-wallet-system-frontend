@@ -19,8 +19,9 @@ import { Link } from "react-router"
 
 import { role } from "@/constants/role"
 import Logo from "@/assets/icons/Logo"
-import { authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth.api"
+import { authApi, useLogoutMutation } from "@/redux/features/auth/auth.api"
 import { useAppDispatch } from "@/redux/hook"
+import { useUserInfoQuery } from "@/redux/features/user/user.api"
 
 
 // Navigation links array to be used in both desktop and mobile menus

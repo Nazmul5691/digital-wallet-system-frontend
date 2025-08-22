@@ -1,12 +1,12 @@
 
 
 import Deposit from "@/pages/user/Deposit";
-import OverView from "@/pages/user/OverView";
 import Profile from "@/pages/user/Profile";
 import SendMoney from "@/pages/user/SendMoney";
 import TransactionHistory from "@/pages/user/TransactionHistory";
 import Withdraw from "@/pages/user/Withdraw";
 import type {  ISidebarItems } from "@/types";
+import Dashboard from "@/pages/user/Dashboard";
 
 export const userSidebarItems: ISidebarItems[] = [
     {
@@ -14,8 +14,8 @@ export const userSidebarItems: ISidebarItems[] = [
         items: [
             {
                 title: "Overview",
-                url: "/user/overview",
-                component: OverView
+                url: "/user/dashboard",
+                component: Dashboard
             },
             {
                 title: "Deposit",
