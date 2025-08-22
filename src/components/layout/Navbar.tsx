@@ -19,6 +19,9 @@ import { Link } from "react-router"
 
 import { role } from "@/constants/role"
 import Logo from "@/assets/icons/Logo"
+import { authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth.api"
+import { useAppDispatch } from "@/redux/hook"
+
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -27,19 +30,20 @@ const navigationLinks = [
     { href: "/admin", label: "Dashboard", role: role.superAdmin },
     { href: "/admin", label: "Dashboard", role: role.admin },
     { href: "/user", label: "Dashboard", role: role.user },
+    { href: "/agent", label: "Dashboard", role: role.agent },
 ]
 
 export default function Navbar() {
 
-    // const { data } = useUserInfoQuery(undefined)
-    // // console.log(data);
-    // const [logout] = useLogoutMutation();
-    // const dispatch = useAppDispatch();
+    const { data } = useUserInfoQuery(undefined)
+    console.log(data);
+    const [logout] = useLogoutMutation();
+    const dispatch = useAppDispatch();
 
-    // const handleLogout = async () => {
-    //     await logout(undefined);
-    //     dispatch(authApi.util.resetApiState());
-    // }
+    const handleLogout = async () => {
+        await logout(undefined);
+        dispatch(authApi.util.resetApiState());
+    }
 
     return (
         <header className="border-b">
@@ -123,7 +127,7 @@ export default function Navbar() {
                                                 </NavigationMenuLink>
                                             </NavigationMenuItem>
                                         }
-                                        {/* {
+                                        {
                                             link.role === data?.data?.role &&
                                             <NavigationMenuItem key={index}>
                                                 <NavigationMenuLink
@@ -133,7 +137,7 @@ export default function Navbar() {
                                                     <Link to={link.href}>{link.label}</Link>
                                                 </NavigationMenuLink>
                                             </NavigationMenuItem>
-                                        } */}
+                                        }
                                     </>
                                 ))}
                             </NavigationMenuList>
@@ -143,7 +147,7 @@ export default function Navbar() {
                 {/* Right side */}
                 <div className="flex items-center gap-2">
                     <ModeToggle />
-                    {/* {
+                    {
                         data?.data?.email && (<Button onClick={handleLogout} variant="outline" className="text-sm">
                             Logout
                         </Button>)
@@ -152,10 +156,7 @@ export default function Navbar() {
                         !data?.data?.email && (<Button asChild className="text-sm">
                             <Link to="/login">Login</Link>
                         </Button>)
-                    } */}
-                    <Button asChild className="text-sm">
-                        <Link to="/login">Login</Link>
-                    </Button>
+                    }
                 </div>
             </div>
         </header>

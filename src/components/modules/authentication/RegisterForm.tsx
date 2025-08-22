@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
@@ -40,9 +40,9 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
 
     const [register] = useRegisterMutation();
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
 
-    const from = (location.state as { from?: string })?.from || "/";
+    // const from = (location.state as { from?: string })?.from || "/";
 
 
     const form = useForm<z.infer<typeof registerSchema>>({
@@ -71,7 +71,8 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
            console.log(result);
            toast.success("User created successfully");
         //    navigate("/verify")
-         navigate(from, { replace: true });
+        //  navigate(from, { replace: true });
+         navigate('/login');
 
         } catch (error) {
             console.log(error);

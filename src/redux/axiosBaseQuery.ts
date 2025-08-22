@@ -26,6 +26,7 @@ const axiosBaseQuery =
         withCredentials: true
       })
       return { data: result.data }
+      
     } catch (axiosError) {
       const err = axiosError as AxiosError
       return {

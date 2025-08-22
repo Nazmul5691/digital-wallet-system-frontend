@@ -1,16 +1,15 @@
 import { baseApi } from "@/redux/baseApi";
 
 
-export const authApi = baseApi.injectEndpoints({
+export const walletApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
-        login: builder.mutation({
-            query: (userInfo) => ({
-                url: "/auth/login",
+        deposit: builder.mutation({
+            query: (depositData: { amount: number }) => ({
+                url: "/wallets/deposit",
                 method: "POST",
-                // body: userInfo
-                data: userInfo    
-            })
+                data: depositData, // axios expects 'data', not 'body'
+            }),
         }),
 
 
@@ -23,13 +22,13 @@ export const authApi = baseApi.injectEndpoints({
         }),
 
 
-         userInfo: builder.query({
+        userInfo: builder.query({
             query: () => ({
                 url: "/user/me",
                 method: "GET",
             }),
             // transformResponse: (response: any) => response.data,
-            providesTags: ["USER"]      
+            providesTags: ["USER"]
         }),
 
 
@@ -45,4 +44,4 @@ export const authApi = baseApi.injectEndpoints({
 })
 
 
-export const { useLoginMutation, useRegisterMutation, useUserInfoQuery, useLogoutMutation } = authApi;
+export const { useDepositMutation, useRegisterMutation, useUserInfoQuery, useLogoutMutation } = walletApi;
