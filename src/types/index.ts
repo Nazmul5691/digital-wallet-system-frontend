@@ -45,3 +45,13 @@ export interface IErrorResponse {
   };
   stack?: string;
 }
+
+
+export type HistoryQueryParams = {
+  page: number;
+  limit: number;
+  type?: string;
+  startDate?: string;
+  endDate?: string;
+  [key: string]: string | number | undefined; // <-- add this
+};

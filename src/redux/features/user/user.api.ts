@@ -1,4 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
+import type { HistoryQueryParams } from "@/types";
 
 
 export const userApi = baseApi.injectEndpoints({
@@ -10,7 +11,7 @@ export const userApi = baseApi.injectEndpoints({
                 method: "GET",
             }),
             // transformResponse: (response: any) => response.data,
-            providesTags: ["USER"]      
+            providesTags: ["USER"]
         }),
 
 
@@ -18,10 +19,44 @@ export const userApi = baseApi.injectEndpoints({
             query: (query) => ({
                 url: `/user/search?query=${query}`
             })
-        })
-        
+        }),
+
+
+        // transactionHistory: builder.query({
+        //      query: () => ({
+        //         url: "/transactions/my-history",
+        //         method: "GET",
+        //     })
+        // })
+
+        // transactionHistory: builder.query<any, HistoryQueryParams>({
+        //     query: (params) => ({
+        //         url: "/transactions/my-history",
+        //         method: "GET",
+        //         params, // <-- sends page, limit, type, startDate, endDate as query params
+        //     }),
+        // }),
+
+        transactionHistory: builder.query<any, HistoryQueryParams>({
+            query: (params) => ({
+                url: "/transactions/my-history",
+                method: "GET",
+                params,
+            }),
+        }),
+
+
+        updateUser: builder.mutation({
+            query: ({ id, payload }) => ({
+                url: `/user/${id}`,
+                method: "PATCH",
+                data: payload, // ✅ use 'data', not 'body'
+            }),
+            invalidatesTags: ["USER"],
+        }),
+
     })
 })
 
 
-export const {  useUserInfoQuery, useLazySearchUserQuery } = userApi;
+export const { useUserInfoQuery, useLazySearchUserQuery, useTransactionHistoryQuery, useUpdateUserMutation } = userApi;
