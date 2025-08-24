@@ -53,5 +53,5 @@ export type HistoryQueryParams = {
   type?: string;
   startDate?: string;
   endDate?: string;
-  [key: string]: string | number | undefined; // <-- add this
+  [key: string]: string | number | undefined; 
 };

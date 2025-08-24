@@ -11,11 +11,12 @@ import { withAuth } from "@/utils/withAuth";
 import { createBrowserRouter, Navigate } from "react-router";
 import { adminSidebarItems } from "./adminSidebarItems";
 import { userSidebarItems } from "./userSidebarItems";
+import { agentSidebarItems } from "./agentSidebarItems";
 
 
 export const router = createBrowserRouter([
     {
-        path:"/",
+        path: "/",
         Component: App,
         children: [
             {
@@ -41,11 +42,16 @@ export const router = createBrowserRouter([
         children: [{ index: true, element: <Navigate to="/user/dashboard" /> }, ...generateRoutes(userSidebarItems)]
     },
     {
+        path: "/agent",
+        Component: withAuth(DashboardLayout, role.agent as TRole),
+        children: [{ index: true, element: <Navigate to="/agent/overview" /> }, ...generateRoutes(agentSidebarItems)]
+    },
+    {
         path: "/login",
         Component: Login
     },
     {
         path: "/register",
-        Component:  Register
+        Component: Register
     },
 ])
