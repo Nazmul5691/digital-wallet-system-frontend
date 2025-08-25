@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/admin",
-        Component: withAuth(DashboardLayout, role.superAdmin as TRole),
+        Component: withAuth(DashboardLayout, role.admin as TRole),
         // Component: DashboardLayout,
         children: [{ index: true, element: <Navigate to="/admin/analytics" /> }, ...generateRoutes(adminSidebarItems)]
         // children: [...generateRoutes(adminSidebarItems)]      //array return kortece and amader children er vitor indivisual ak akta object lagbe tai spreed kore dilam 
