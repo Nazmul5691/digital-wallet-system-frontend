@@ -3,6 +3,7 @@ import AgentProfile from "@/pages/agent/AgentProfile";
 import AgentTransactions from "@/pages/agent/AgentTransactions";
 import CashIn from "@/pages/agent/CashIn";
 import CashOut from "@/pages/agent/CashOut";
+import Homepage from "@/pages/Homepage";
 import type { ISidebarItems } from "@/types";
 
 
@@ -38,4 +39,14 @@ export const agentSidebarItems: ISidebarItems[] = [
             },
         ],
     },
+    {
+        title: "Home",
+        items: [
+            {
+                title: "Home",
+                url: "../",
+                component: Homepage,
+            },
+        ],
+    }
 ];

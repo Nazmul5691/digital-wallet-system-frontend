@@ -23,20 +23,6 @@ export const userApi = baseApi.injectEndpoints({
         }),
 
 
-        // transactionHistory: builder.query({
-        //      query: () => ({
-        //         url: "/transactions/my-history",
-        //         method: "GET",
-        //     })
-        // })
-
-        // transactionHistory: builder.query<any, HistoryQueryParams>({
-        //     query: (params) => ({
-        //         url: "/transactions/my-history",
-        //         method: "GET",
-        //         params, // <-- sends page, limit, type, startDate, endDate as query params
-        //     }),
-        // }),
 
         transactionHistory: builder.query<any, HistoryQueryParams>({
             query: (params) => ({

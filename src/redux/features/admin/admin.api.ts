@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { baseApi } from "@/redux/baseApi";
@@ -78,8 +79,33 @@ export const adminApi = baseApi.injectEndpoints({
             providesTags: ["TRANSACTION"],
         }),
 
+
+        getUser: builder.query({
+            query: (userId) => ({
+                url: `/user/${userId}`,
+                method: "GET",
+            }),
+            providesTags: (_result, _error, userId) => [{ type: "USER", id: userId }],
+        }),
+
+
+        getAllWallets: builder.query<any, { userId?: string }>({
+            query: (params) => ({
+                url: "/wallets", // your endpoint
+                method: "GET",
+                params, // optional userId filter
+            }),
+            providesTags: (result, error, params) =>
+                result
+                    ? [
+                        ...result.data.map((wallet: any) => ({ type: "WALLET" as const, id: wallet._id })),
+                        { type: "WALLET", id: "LIST" },
+                    ]
+                    : [{ type: "WALLET", id: "LIST" }],
+        }),
+
     })
 })
 
 
-export const { useGetAllUsersQuery, useUpdateUserStatusMutation, useGetAllAgentsQuery, useUpdateAgentStatusMutation, useGetAllTransactionsQuery } = adminApi;
+export const { useGetAllUsersQuery, useUpdateUserStatusMutation, useGetAllAgentsQuery, useUpdateAgentStatusMutation, useGetAllTransactionsQuery, useGetUserQuery, useGetAllWalletsQuery } = adminApi;

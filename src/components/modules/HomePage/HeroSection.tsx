@@ -1,80 +1,48 @@
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
-import Logo from "@/assets/icons/Logo";
-// import { useGetDivisionsQuery } from "@/redux/features/division/division.api";
+export default function HeroBanner() {
+  return (
+    <div className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] flex items-center justify-center text-center px-4 
+                    bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
+      
+      {/* Background pattern */}
+      <div className="absolute inset-0 z-0">
+        <svg
+          className="absolute inset-0 h-full w-full opacity-10 dark:opacity-20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <pattern id="pattern-circles" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle className="text-blue-500 dark:text-white" cx="20" cy="20" r="1" fill="currentColor" />
+          </pattern>
+          <rect className="w-full h-full text-blue-500 dark:text-white" fill="url(#pattern-circles)" />
+        </svg>
+      </div>
 
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-2 sm:px-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight 
+                       text-white dark:text-gray-100 transition-colors duration-500">
+          Your Money, Your Way.
+          <br />
+          Simple, Secure, Swift.
+        </h1>
+        <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto 
+                      text-white/90 dark:text-gray-300 transition-colors duration-500">
+          Manage your finances, send money to friends, and pay bills instantly with our all-in-one digital wallet.
+        </p>
 
-export default function HeroSection() {
-    // const [selectedDivision, setSelectedDivision] = useState<string | undefined>(
-    //     undefined
-    // );
-
-    // const { data: divisionData, isLoading: divisionIsLoading } =useGetDivisionQuery(undefined);
-    // const { data: divisionData } =useGetDivisionsQuery(undefined);
-
-    // const divisionOption = divisionData?.data?.map(
-    //     (item: { _id: string; name: string }) => ({
-    //         label: item.name,
-    //         value: item._id,
-    //     })
-    // );
-
-
-    return (
-        <section className="relative overflow-hidden py-32 min-h-screen">
-            <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
-                <img
-                    alt="background"
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/square-alt-grid.svg"
-                    className="[mask-image:radial-gradient(75%_75%_at_center,white,transparent)] opacity-90"
-                />
-            </div>
-            <div className="relative z-10 container mx-auto">
-                <div className="mx-auto flex max-w-5xl flex-col items-center">
-                    <div className="flex flex-col items-center gap-6 text-center">
-                        <div className="rounded-xl bg-background/30 p-4 shadow-sm backdrop-blur-sm">
-                            <Logo />
-                        </div>
-                        <div>
-                            <h1 className="mb-6 text-2xl font-bold tracking-tight text-pretty lg:text-5xl">
-                                Explore the beauty of{" "}
-                                <span className="text-primary">Bangladesh</span>
-                            </h1>
-                            <p className="mx-auto max-w-3xl text-muted-foreground lg:text-xl">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
-                                doloremque mollitia fugiat omnis! Porro facilis quo animi
-                                consequatur. Explicabo.
-                            </p>
-                        </div>
-                        {/* <div className="mt-6 flex justify-center gap-3">
-                            <Select onValueChange={(value) => setSelectedDivision(value)}>
-                                <SelectTrigger className="w-[300px]">
-                                    <SelectValue />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectLabel>Divisions</SelectLabel>
-                                        {divisionOption?.map(
-                                            (item: { value: string; label: string }) => (
-                                                <SelectItem key={item.value} value={item.value}>
-                                                    {item.label}
-                                                </SelectItem>
-                                            )
-                                        )}
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-
-                            {selectedDivision ? (
-                                <Button asChild>
-                                    <Link to={`/tours?division=${selectedDivision}`}>Search</Link>
-                                </Button>
-                            ) : (
-                                <Button disabled>Search</Button>
-                            )}
-                        </div> */}
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
+          <Button asChild className="bg-white text-blue-600 hover:bg-gray-100 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200
+                                     transition-transform transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-6 rounded-full font-semibold text-base sm:text-lg shadow-lg w-full sm:w-auto">
+            <Link to="/register">Get Started</Link>
+          </Button>
+          <Button asChild variant="outline" className="border-white bg-white/20 text-white hover:bg-white/30 dark:border-gray-300 dark:text-gray-200
+                                                     dark:hover:bg-gray-700 transition-transform transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-6 rounded-full font-semibold text-base sm:text-lg shadow-lg w-full sm:w-auto">
+            <Link to="/about">Learn More</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 }

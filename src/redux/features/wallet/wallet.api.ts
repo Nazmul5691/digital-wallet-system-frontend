@@ -31,12 +31,15 @@ export const walletApi = baseApi.injectEndpoints({
         }),
 
 
-
-
-
-
+        getMyWallet: builder.query({
+            query: () => ({
+                url: "/wallets/my-wallet",
+                method: "GET",
+            }),
+            providesTags: ["USER"], // refetch on user changes
+        }),
     })
 })
 
 
-export const { useDepositMutation, useWithdrawMutation, useSendMoneyMutation } = walletApi;
+export const { useDepositMutation, useWithdrawMutation, useSendMoneyMutation, useGetMyWalletQuery } = walletApi;

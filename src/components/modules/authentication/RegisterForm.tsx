@@ -1,4 +1,7 @@
 
+
+
+
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -13,37 +16,28 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 import Password from "@/components/ui/Password";
 
-
-
-const registerSchema = z.object({
-    name: z.string().min(2, { message: "Username must be at least 2 characters." }).max(50),
-    email: z.email(),
-    password: z.string().min(8, { message: "Password must be at least 8 characters." }),
-    confirmPassword: z.string().min(8, { message: "Confirm Password must be at least 8 characters." })
-
-}).refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"]
-})
-
-
-
+const registerSchema = z
+    .object({
+        name: z.string().min(2, { message: "Username must be at least 2 characters." }).max(50),
+        email: z.string().email(),
+        password: z.string().min(8, { message: "Password must be at least 8 characters." }),
+        confirmPassword: z.string().min(8, { message: "Confirm Password must be at least 8 characters." }),
+        role: z.enum(["USER", "AGENT"]).optional(),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords don't match",
+        path: ["confirmPassword"],
+    });
 
 export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-
-
     const [register] = useRegisterMutation();
     const navigate = useNavigate();
-    // const location = useLocation();
-
-    // const from = (location.state as { from?: string })?.from || "/";
-
 
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
@@ -51,34 +45,29 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
             name: "",
             email: "",
             password: "",
-            confirmPassword: ""
-        }
-    })
+            confirmPassword: "",
+            role: "USER", // default role
+        },
+    });
 
-    // const onSubmit:SubmitHandler<FieldValues> = (data) => {
-    //     console.log(data);
-    // }
     const onSubmit = async (data: z.infer<typeof registerSchema>) => {
-        // console.log(data);
         const userInfo = {
             name: data.name,
             email: data.email,
-            password: data.password
-        }
+            password: data.password,
+            role: data.role || "USER", // default as user
+        };
 
         try {
-           const result = await register(userInfo).unwrap();
-           console.log(result);
-           toast.success("User created successfully");
-        //    navigate("/verify")
-        //  navigate(from, { replace: true });
-         navigate('/login');
-
+            const result = await register(userInfo).unwrap();
+            console.log(result);
+            toast.success("User created successfully");
+            navigate("/login");
         } catch (error) {
             console.log(error);
+            toast.error("Registration failed");
         }
-    }
-
+    };
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -88,10 +77,11 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                     Enter your details to create an account
                 </p>
             </div>
+
             <div className="grid gap-6">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        {/* name field */}
+                        {/* Name Field */}
                         <FormField
                             control={form.control}
                             name="name"
@@ -99,8 +89,7 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        {/* <Input placeholder="shadcn" onChange={field.onChange} onBlur={field.onBlur} /> */}
-                                        <Input placeholder="Jhon doe" {...field} />
+                                        <Input placeholder="John Doe" {...field} />
                                     </FormControl>
                                     <FormDescription className="sr-only">
                                         This is your public display name.
@@ -109,7 +98,8 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                 </FormItem>
                             )}
                         />
-                        {/* email field */}
+
+                        {/* Email Field */}
                         <FormField
                             control={form.control}
                             name="email"
@@ -117,16 +107,17 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="jhonDoe@gmail.com" type="email" {...field} />
+                                        <Input placeholder="johnDoe@gmail.com" type="email" {...field} />
                                     </FormControl>
                                     <FormDescription className="sr-only">
-                                        This is your email name.
+                                        This is your email address.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        {/* password field */}
+
+                        {/* Password Field */}
                         <FormField
                             control={form.control}
                             name="password"
@@ -134,8 +125,6 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
-                                        {/* <Input placeholder="shadcn" onChange={field.onChange} onBlur={field.onBlur} /> */}
-                                        {/* <Input placeholder="********" type="password" {...field} /> */}
                                         <Password {...field} />
                                     </FormControl>
                                     <FormDescription className="sr-only">
@@ -145,7 +134,8 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                 </FormItem>
                             )}
                         />
-                        {/* confirm password field */}
+
+                        {/* Confirm Password Field */}
                         <FormField
                             control={form.control}
                             name="confirmPassword"
@@ -162,7 +152,34 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">Submit</Button>
+
+                        {/* Role Selection */}
+                        <FormField
+                            control={form.control}
+                            name="role"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <label className="flex items-center gap-2">
+                                            <input
+                                                type="checkbox"
+                                                checked={field.value === "AGENT"}
+                                                onChange={(e) =>
+                                                    field.onChange(e.target.checked ? "AGENT" : "USER")
+                                                }
+                                                className="accent-green-500"
+                                            />
+                                            Sign up as Agent
+                                        </label>
+                                    </FormControl>
+                                    <FormDescription>
+                                        Check this if you want to register as an agent. Default is User.
+                                    </FormDescription>
+                                </FormItem>
+                            )}
+                        />
+
+                        <Button type="submit">Register</Button>
                     </form>
                 </Form>
 

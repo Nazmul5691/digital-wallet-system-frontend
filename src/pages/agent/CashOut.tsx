@@ -15,9 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Search, UserCheck, DollarSign } from "lucide-react";
-import { useLazySearchUserQuery } from "@/redux/features/user/user.api";
 import { useNavigate } from "react-router";
 import { useCashOutMutation } from "@/redux/features/agent/agent.api";
+import { useLazySearchUserQuery } from "@/redux/features/user/user.api";
 
 // Zod schema for the search form
 const searchSchema = z.object({

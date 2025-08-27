@@ -5,8 +5,9 @@ import Profile from "@/pages/user/Profile";
 import SendMoney from "@/pages/user/SendMoney";
 import TransactionHistory from "@/pages/user/TransactionHistory";
 import Withdraw from "@/pages/user/Withdraw";
-import type {  ISidebarItems } from "@/types";
+import type { ISidebarItems } from "@/types";
 import Dashboard from "@/pages/user/Dashboard";
+import Homepage from "@/pages/Homepage";
 
 export const userSidebarItems: ISidebarItems[] = [
     {
@@ -41,6 +42,16 @@ export const userSidebarItems: ISidebarItems[] = [
                 title: "Profile",
                 url: "/user/profile",
                 component: Profile
+            },
+        ],
+    },
+    {
+        title: "Home",
+        items: [
+            {
+                title: "Home",
+                url: "../",
+                component: Homepage,
             },
         ],
     }

@@ -5,6 +5,7 @@ import Profile from "@/pages/admin/Profile";
 import type { ISidebarItems } from "@/types";
 import { lazy } from "react";
 import ManageUsers from "@/pages/admin/ManageUsers";
+import Homepage from "@/pages/Homepage";
 
 const Analytics = lazy(() => import("@/pages/admin/Analytics"))
 
@@ -59,4 +60,16 @@ export const adminSidebarItems: ISidebarItems[] = [
             },
         ],
     },
+
+    {
+        title: "Home",
+        items: [
+            {
+                title: "Home",
+                url: "../",
+                component: Homepage, // must provide a component
+            },
+        ],
+    }
+
 ];
