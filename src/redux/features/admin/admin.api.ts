@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { baseApi } from "@/redux/baseApi";
@@ -95,7 +95,7 @@ export const adminApi = baseApi.injectEndpoints({
                 method: "GET",
                 params, // optional userId filter
             }),
-            providesTags: (result, error, params) =>
+            providesTags: (result) =>
                 result
                     ? [
                         ...result.data.map((wallet: any) => ({ type: "WALLET" as const, id: wallet._id })),
