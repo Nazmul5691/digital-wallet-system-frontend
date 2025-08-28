@@ -10,6 +10,8 @@ export const walletApi = baseApi.injectEndpoints({
                 method: "POST",
                 data: depositData, // axios expects 'data', not 'body'
             }),
+            // invalidatesTags: ["USER"],
+            invalidatesTags: ["WALLET"], 
         }),
 
 
@@ -18,7 +20,9 @@ export const walletApi = baseApi.injectEndpoints({
                 url: "/wallets/withdraw",
                 method: "POST",
                 data: withdrawData
-            })
+            }),
+            // invalidatesTags: ["USER"],
+             invalidatesTags: ["WALLET"],
         }),
 
 
@@ -27,7 +31,9 @@ export const walletApi = baseApi.injectEndpoints({
                 url: "/wallets/send-money",
                 method: "POST",
                 data: sendMoneyData
-            })
+            }),
+            // invalidatesTags: ["USER"],
+             invalidatesTags: ["WALLET"],
         }),
 
 
@@ -36,7 +42,8 @@ export const walletApi = baseApi.injectEndpoints({
                 url: "/wallets/my-wallet",
                 method: "GET",
             }),
-            providesTags: ["USER"], // refetch on user changes
+            // invalidatesTags: ["USER"]
+            providesTags: ["WALLET"], 
         }),
     })
 })

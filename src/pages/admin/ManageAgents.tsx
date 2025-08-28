@@ -85,11 +85,11 @@ export default function ManageAgents() {
                                             disabled={isDisabled}
                                         >
                                             {agent.isApproved ? (
-                                                <span className="flex items-center gap-1">
-                                                    <XCircle className="h-4 w-4" /> Disapprove
+                                                <span className="flex items-center gap-1 cursor-pointer">
+                                                    <XCircle className="h-4 w-4 " /> Disapprove
                                                 </span>
                                             ) : (
-                                                <span className="flex items-center gap-1">
+                                                <span className="flex items-center gap-1 cursor-pointer">
                                                     <CheckCircle className="h-4 w-4" /> Approve
                                                 </span>
                                             )}
@@ -103,8 +103,8 @@ export default function ManageAgents() {
                                             <TableCell>{agent.phone}</TableCell>
                                             <TableCell>
                                                 <span
-                                                    className={cn("px-2 py-1 rounded-full text-xs font-semibold", {
-                                                        "bg-green-100 text-green-800": agent.isApproved,
+                                                    className={cn("px-2 py-1 rounded-full text-xs cursor-pointer font-semibold", {
+                                                        "bg-green-100 text-green-800 bg-blue-": agent.isApproved,
                                                         "bg-red-100 text-red-800": !agent.isApproved,
                                                     })}
                                                 >

@@ -75,15 +75,15 @@ export default function AgentTransactions() {
         {/* Filter Controls */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Select onValueChange={(value) => handleFilterChange("type", value)}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full cursor-pointer">
               <SelectValue placeholder="Filter by Type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="CASH_IN">CASH_IN</SelectItem>
-              <SelectItem value="CASH_OUT">CASH_OUT</SelectItem>
-              <SelectItem value="DEPOSIT">DEPOSIT</SelectItem>
-              <SelectItem value="WITHDRAW">WITHDRAW</SelectItem>
+              <SelectItem className="cursor-pointer" value="all">All Types</SelectItem>
+              <SelectItem className="cursor-pointer" value="CASH_IN">CASH_IN</SelectItem>
+              <SelectItem className="cursor-pointer" value="CASH_OUT">CASH_OUT</SelectItem>
+              <SelectItem className="cursor-pointer" value="DEPOSIT">DEPOSIT</SelectItem>
+              <SelectItem className="cursor-pointer" value="WITHDRAW">WITHDRAW</SelectItem>
             </SelectContent>
           </Select>
 

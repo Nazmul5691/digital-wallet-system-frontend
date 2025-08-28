@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/components/Withdraw.tsx
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -100,7 +101,7 @@ export default function Withdraw() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full" disabled={isLoading}>
+                        <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
                             {isLoading ? "Withdrawing..." : "Withdraw"}
                         </Button>
                     </form>

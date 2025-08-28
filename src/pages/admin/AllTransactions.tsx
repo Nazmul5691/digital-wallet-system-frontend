@@ -65,16 +65,16 @@ export default function AllTransactions() {
                     </div>
                     <div>
                         <Select value={filterType} onValueChange={setFilterType}>
-                            <SelectTrigger className="w-full md:w-[150px]">
+                            <SelectTrigger className="w-full md:w-[150px] cursor-pointer">
                                 <SelectValue placeholder="Category" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">All</SelectItem>
-                                <SelectItem value="CASH_IN">Cash In</SelectItem>
-                                <SelectItem value="CASH_OUT">Cash Out</SelectItem>
-                                <SelectItem value="SEND">Sent Money</SelectItem>
-                                <SelectItem value="WITHDRAW">Withdraw</SelectItem>
-                                <SelectItem value="DEPOSIT">Deposit</SelectItem>
+                                <SelectItem className="cursor-pointer" value="all">All</SelectItem>
+                                <SelectItem className="cursor-pointer" value="CASH_IN">Cash In</SelectItem>
+                                <SelectItem className="cursor-pointer" value="CASH_OUT">Cash Out</SelectItem>
+                                <SelectItem className="cursor-pointer" value="SEND">Sent Money</SelectItem>
+                                <SelectItem className="cursor-pointer" value="WITHDRAW">Withdraw</SelectItem>
+                                <SelectItem className="cursor-pointer" value="DEPOSIT">Deposit</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -86,14 +86,14 @@ export default function AllTransactions() {
                     </div>
                     <div>
                         <Select value={filterStatus} onValueChange={setFilterStatus}>
-                            <SelectTrigger className="w-full md:w-[150px]">
+                            <SelectTrigger className="w-full md:w-[150px] cursor-pointer">
                                 <SelectValue placeholder="Status" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">All</SelectItem>
-                                <SelectItem value="COMPLETED">Completed</SelectItem>
-                                <SelectItem value="FAILED">Failed</SelectItem>
-                                <SelectItem value="PENDING">Pending</SelectItem>
+                                <SelectItem className="cursor-pointer" value="all">All</SelectItem>
+                                <SelectItem className="cursor-pointer" value="COMPLETED">Completed</SelectItem>
+                                <SelectItem className="cursor-pointer" value="FAILED">Failed</SelectItem>
+                                <SelectItem className="cursor-pointer" value="PENDING">Pending</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -171,11 +171,11 @@ export default function AllTransactions() {
                     <Pagination>
                         <PaginationContent>
                             <PaginationItem>
-                                {page === 1 ? <span className="opacity-50 cursor-not-allowed"><PaginationPrevious /></span> : <PaginationPrevious onClick={handlePreviousPage} />}
+                                {page === 1 ? <span className="opacity-50 cursor-not-allowed"><PaginationPrevious  /></span> : <PaginationPrevious className="cursor-pointer" onClick={handlePreviousPage} />}
                             </PaginationItem>
                             <PaginationItem className="px-4 text-sm font-medium">Page {page} of {meta.totalPage}</PaginationItem>
-                            <PaginationItem>
-                                {page === meta.totalPage ? <span className="opacity-50 cursor-not-allowed"><PaginationNext /></span> : <PaginationNext onClick={handleNextPage} />}
+                            <PaginationItem className="cursor-pointer">
+                                {page === meta.totalPage ? <span className="opacity-50 cursor-not-allowed"><PaginationNext /></span> : <PaginationNext className="cursor-pointer" onClick={handleNextPage} />}
                             </PaginationItem>
                         </PaginationContent>
                     </Pagination>

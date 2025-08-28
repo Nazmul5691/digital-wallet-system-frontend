@@ -129,7 +129,7 @@ export default function CashOut() {
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit" className="w-full" disabled={isSearching}>
+                            <Button type="submit" className="w-full cursor-pointer" disabled={isSearching}>
                                 {isSearching ? "Searching..." : "Search User"}
                             </Button>
                         </form>
@@ -178,10 +178,10 @@ export default function CashOut() {
                                 )}
                             />
 
-                            <Button type="submit" className="w-full" disabled={isCashingOut}>
+                            <Button type="submit" className="w-full cursor-pointer" disabled={isCashingOut}>
                                 {isCashingOut ? "Cashing Out..." : "Cash Out"}
                             </Button>
-                            <Button type="button" variant="outline" className="w-full" onClick={() => setRecipient(null)}>
+                            <Button type="button" variant="outline" className="w-full cursor-pointer" onClick={() => setRecipient(null)}>
                                 Cancel
                             </Button>
                         </form>

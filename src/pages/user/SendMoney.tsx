@@ -1,148 +1,4 @@
-// // src/components/SendMoney.tsx
-// import { useForm } from "react-hook-form";
-// import { z } from "zod";
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { Button } from "@/components/ui/button";
-// import {
-//     Form,
-//     FormControl,
-//     FormField,
-//     FormItem,
-//     FormLabel,
-//     FormMessage,
-// } from "@/components/ui/form";
-// import { Input } from "@/components/ui/input";
-// import { toast } from "sonner";
-// import { DollarSign, User } from "lucide-react";
-// import { useSendMoneyMutation } from "@/redux/features/wallet/wallet.api";
-// import { useNavigate } from "react-router";
-
-// // Zod schema for form validation
-// const objectIdSchema = z.string().regex(/^[0-9a-fA-F]{24}$/, {
-//     message: "Invalid user ID. Please provide a valid 24-character ID.",
-// });
-
-// const sendMoneySchema = z.object({
-//     receiverId: objectIdSchema,
-//     amount: z.string().refine((val) => {
-//         const num = Number(val);
-//         return !isNaN(num) && num > 0;
-//     }, {
-//         message: "Amount must be a positive number.",
-//     }),
-// });
-
-// export default function SendMoney() {
-//     const [sendMoney, { isLoading }] = useSendMoneyMutation();
-//     const navigate = useNavigate();
-
-//     const form = useForm<z.infer<typeof sendMoneySchema>>({
-//         resolver: zodResolver(sendMoneySchema),
-//         defaultValues: {
-//             receiverId: "",
-//             amount: "",
-//         },
-//     });
-
-//     const onSubmit = async (data: z.infer<typeof sendMoneySchema>) => {
-//         try {
-//             // The RTK Query mutation expects a payload with both receiverId and amount
-//             await sendMoney({
-//                 receiverId: data.receiverId,
-//                 amount: Number(data.amount)
-//             }).unwrap();
-
-//             toast.success("Money sent successfully!");
-//             form.reset();
-//             navigate('/user/dashboard');
-
-//         } catch (error: any) {
-//             const errorMessage = error?.data?.message || "Failed to send money. Please try again.";
-//             toast.error(errorMessage);
-//         }
-//     };
-
-//     return (
-//         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] p-4">
-//             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
-//                 <div className="text-center">
-//                     <h1 className="text-2xl font-bold">Send Money</h1>
-//                     <p className="text-sm text-gray-500 dark:text-gray-400">
-//                         Transfer money to another user by entering their ID.
-//                     </p>
-//                 </div>
-//                 <Form {...form}>
-//                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-//                         {/* Receiver ID Field */}
-//                         <FormField
-//                             control={form.control}
-//                             name="receiverId"
-//                             render={({ field }) => (
-//                                 <FormItem>
-//                                     <FormLabel>Receiver ID</FormLabel>
-//                                     <FormControl>
-//                                         <div className="relative">
-//                                             <Input
-//                                                 type="text"
-//                                                 placeholder="Enter user's ID"
-//                                                 className="pl-8"
-//                                                 {...field}
-//                                             />
-//                                             <span className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground">
-//                                                 <User className="h-4 w-4" />
-//                                             </span>
-//                                         </div>
-//                                     </FormControl>
-//                                     <FormMessage />
-//                                 </FormItem>
-//                             )}
-//                         />
-
-//                         {/* Amount Field */}
-//                         <FormField
-//                             control={form.control}
-//                             name="amount"
-//                             render={({ field }) => (
-//                                 <FormItem>
-//                                     <FormLabel>Amount</FormLabel>
-//                                     <FormControl>
-//                                         <div className="relative">
-//                                             <Input
-//                                                 type="number"
-//                                                 placeholder="e.g., 50"
-//                                                 className="pl-8"
-//                                                 {...field}
-//                                                 onChange={(e) => {
-//                                                     const value = e.target.value;
-//                                                     if (/^\d*\.?\d*$/.test(value) || value === "") {
-//                                                         field.onChange(value);
-//                                                     }
-//                                                 }}
-//                                             />
-//                                             <span className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground">
-//                                                 <DollarSign className="h-4 w-4" />
-//                                             </span>
-//                                         </div>
-//                                     </FormControl>
-//                                     <FormMessage />
-//                                 </FormItem>
-//                             )}
-//                         />
-
-//                         <Button type="submit" className="w-full" disabled={isLoading}>
-//                             {isLoading ? "Sending..." : "Send Money"}
-//                         </Button>
-//                     </form>
-//                 </Form>
-//             </div>
-//         </div>
-//     );
-// }
-
-
-
-
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 // src/components/SendMoney.tsx
 import { useState } from "react";
@@ -276,7 +132,7 @@ export default function SendMoney() {
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit" className="w-full" disabled={isSearching}>
+                            <Button type="submit" className="w-full cursor-pointer" disabled={isSearching}>
                                 {isSearching ? "Searching..." : "Search User"}
                             </Button>
                         </form>
@@ -328,11 +184,11 @@ export default function SendMoney() {
                                 )}
                             />
 
-                            <Button type="submit" className="w-full" disabled={isSending}>
+                            <Button type="submit" className="w-full cursor-pointer" disabled={isSending}>
                                 {isSending ? "Sending..." : "Send Money"}
                             </Button>
 
-                            <Button type="button" variant="outline" className="w-full" onClick={() => setRecipient(null)}>
+                            <Button type="button" variant="outline" className="w-full cursor-pointer" onClick={() => setRecipient(null)}>
                                 Cancel
                             </Button>
                         </form>

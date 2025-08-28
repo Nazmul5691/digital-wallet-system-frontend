@@ -39,7 +39,7 @@ export default function CashOut() {
                     {cashOutTransactions.map((tx: any) => (
                         <li
                             key={tx._id}
-                            className="relative p-6 bg-white rounded-xl shadow-lg border border-gray-200 transition-transform transform hover:scale-[1.02] hover:shadow-2xl duration-300 ease-in-out"
+                            className="relative p-6 bg-white rounded-xl shadow-lg border border-gray-200 transition-transform cursor-pointer transform hover:scale-[1.02] hover:shadow-2xl duration-300 ease-in-out"
                         >
                             <div className="flex flex-col md:flex-row md:justify-between md:items-start space-y-4 md:space-y-0">
                                 <div className="flex-1 space-y-2">

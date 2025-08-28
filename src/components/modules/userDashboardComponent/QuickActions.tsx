@@ -8,7 +8,7 @@ export default function QuickActions() {
     return (
         <div className="grid grid-cols-2 gap-4">
             <Button
-                className="h-24 flex-col justify-center"
+                className="h-24 flex-col justify-center cursor-pointer"
                 onClick={() => navigate("/user/deposit")}
             >
                 <ArrowUpRight className="h-6 w-6 mb-2" />
@@ -16,7 +16,7 @@ export default function QuickActions() {
             </Button>
 
             <Button
-                className="h-24 flex-col justify-center"
+                className="h-24 flex-col justify-center cursor-pointer"
                 onClick={() => navigate("/user/send-money")}
             >
                 <ArrowDownLeft className="h-6 w-6 mb-2" />
@@ -24,7 +24,7 @@ export default function QuickActions() {
             </Button>
 
             <Button
-                className="h-24 flex-col justify-center"
+                className="h-24 flex-col justify-center cursor-pointer"
                 onClick={() => navigate("/user/withdraw")}
             >
                 <ArrowDownLeft className="h-6 w-6 mb-2" />

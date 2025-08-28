@@ -81,15 +81,15 @@ export default function TransactionHistory() {
           {/* Filters */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Select onValueChange={(value) => handleFilterChange("type", value)}>
-              <SelectTrigger className="w-full sm:w-48">
+              <SelectTrigger className="w-full sm:w-48 cursor-pointer">
                 <SelectValue placeholder="Filter by Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
-                <SelectItem value="DEPOSIT">Deposit</SelectItem>
-                <SelectItem value="WITHDRAW">Withdraw</SelectItem>
-                <SelectItem value="SEND">Sent Money</SelectItem>
-                <SelectItem value="CASH_IN">Cash Out</SelectItem>
+                <SelectItem className="cursor-pointer" value="all">All Types</SelectItem>
+                <SelectItem className="cursor-pointer" value="DEPOSIT">Deposit</SelectItem>
+                <SelectItem className="cursor-pointer" value="WITHDRAW">Withdraw</SelectItem>
+                <SelectItem className="cursor-pointer" value="SEND">Sent Money</SelectItem>
+                <SelectItem className="cursor-pointer" value="CASH_IN">Cash Out</SelectItem>
               </SelectContent>
             </Select>
           </div>

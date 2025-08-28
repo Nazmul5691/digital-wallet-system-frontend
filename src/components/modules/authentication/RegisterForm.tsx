@@ -26,8 +26,24 @@ const registerSchema = z
     .object({
         name: z.string().min(2, { message: "Username must be at least 2 characters." }).max(50),
         email: z.string().email(),
-        password: z.string().min(8, { message: "Password must be at least 8 characters." }),
-        confirmPassword: z.string().min(8, { message: "Confirm Password must be at least 8 characters." }),
+        password: z.union([
+            z
+                .string()
+                .min(8, "Password must be at least 8 characters")
+                .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+                .regex(/\d/, "Password must contain at least one number")
+                .regex(/[!@#$%^&*]/, "Password must contain at least one special character"),
+            z.literal(""), // ✅ allow empty string
+        ]),
+        confirmPassword: z.union([
+            z
+                .string()
+                .min(8, "Password must be at least 8 characters")
+                .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+                .regex(/\d/, "Password must contain at least one number")
+                .regex(/[!@#$%^&*]/, "Password must contain at least one special character"),
+            z.literal(""), // ✅ allow empty string
+        ]),
         role: z.enum(["USER", "AGENT"]).optional(),
     })
     .refine((data) => data.password === data.confirmPassword, {

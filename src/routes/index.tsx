@@ -16,12 +16,14 @@ import Features from "@/pages/Features";
 import ContactUs from "@/pages/ContactUs";
 import FAQ from "@/pages/FAQ";
 import About from "@/components/modules/aboutUs/About";
+import GlobalErrorPage from "@/components/layout/GlobalErrorPage";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         Component: App,
+        errorElement: <GlobalErrorPage />,
         children: [
             {
                 index: true,
@@ -48,6 +50,7 @@ export const router = createBrowserRouter([
     {
         path: "/admin",
         Component: withAuth(DashboardLayout, role.admin as TRole),
+        errorElement: <GlobalErrorPage />,
         // Component: DashboardLayout,
         children: [{ index: true, element: <Navigate to="/admin/analytics" /> }, ...generateRoutes(adminSidebarItems)]
         // children: [...generateRoutes(adminSidebarItems)]      //array return kortece and amader children er vitor indivisual ak akta object lagbe tai spreed kore dilam 
@@ -56,12 +59,29 @@ export const router = createBrowserRouter([
     {
         path: "/user",
         Component: withAuth(DashboardLayout, role.user as TRole),
+        errorElement: <GlobalErrorPage />,
         children: [{ index: true, element: <Navigate to="/user/dashboard" /> }, ...generateRoutes(userSidebarItems)]
     },
     {
         path: "/agent",
         Component: withAuth(DashboardLayout, role.agent as TRole),
+        errorElement: <GlobalErrorPage />,
         children: [{ index: true, element: <Navigate to="/agent/overview" /> }, ...generateRoutes(agentSidebarItems)]
+    },
+    {
+        path: "/admin",
+        Component: withAuth(DashboardLayout, role.admin as TRole),
+        errorElement: <GlobalErrorPage />,
+        children: [
+            { index: true, element: <Navigate to="/admin/analytics" /> },
+            ...generateRoutes(adminSidebarItems),
+
+
+            {
+                path: "users/:userId",
+                element: <UserDetails />,
+            },
+        ],
     },
     {
         path: "/login",
@@ -71,19 +91,8 @@ export const router = createBrowserRouter([
         path: "/register",
         Component: Register
     },
-
     {
-        path: "/admin",
-        Component: withAuth(DashboardLayout, role.admin as TRole),
-        children: [
-            { index: true, element: <Navigate to="/admin/analytics" /> },
-            ...generateRoutes(adminSidebarItems),
-
-            
-            {
-                path: "users/:userId",
-                element: <UserDetails />,
-            },
-        ],
+        path: "*",
+        element: <GlobalErrorPage />,
     },
 ])

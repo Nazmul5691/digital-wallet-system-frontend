@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 import { useForm } from "react-hook-form";
@@ -99,7 +100,7 @@ export default function Deposit() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full" disabled={isLoading}>
+                        <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
                             {isLoading ? "Depositing..." : "Deposit"}
                         </Button>
                     </form>

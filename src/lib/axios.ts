@@ -4,7 +4,8 @@ import axios, { type AxiosRequestConfig } from "axios";
 
 export const axiosInstance = axios.create({
 //   baseURL: config.baseUrl,
-  baseURL: "https://digital-wallet-system-backend-one.vercel.app/api",
+  // baseURL: "https://digital-wallet-system-backend-one.vercel.app/api",
+  baseURL: "http://localhost:5000/api",
   withCredentials: true,
 });
 
