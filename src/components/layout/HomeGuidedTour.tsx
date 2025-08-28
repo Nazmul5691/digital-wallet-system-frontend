@@ -1,93 +1,78 @@
+
+
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import Joyride, { type Step, type CallBackProps, STATUS } from "react-joyride";
-import { useNavigate, useLocation } from "react-router";
 
 export default function HomeGuidedTour() {
   const [run, setRun] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  const steps: (Step & { route?: string })[] = [
-    { target: ".nav-items", content: "This is navigation menu.", route: "/" },
+  const steps: Step[] = [
+    { target: ".nav-items", content: "This is the navigation menu." },
     {
       target: ".theme-change-login",
       content:
         "Here you can change your app theme and click login to start exploring your dashboard!",
-      route: "/",
     },
     {
       target: ".banner-section",
       content:
         "Welcome to our homepage! Check out the highlights and latest updates here.",
-      route: "/",
     },
     {
       target: ".footer-section",
       content:
         "Here in the footer, you can find important links, contact info, and social media channels.",
-      route: "/",
     },
   ];
 
-  // Start tour only once on first visit
-  useEffect(() => {
-    const hasSeenTour = localStorage.getItem("hasSeenTour");
-    if (!hasSeenTour) {
-      startTourFromStep(0);
-      localStorage.setItem("hasSeenTour", "true");
+  // Check if all targets exist
+  const areTargetsReady = () =>
+  steps.every(step => {
+    if (typeof step.target === "string") {
+      return !!document.querySelector(step.target);
     }
-  }, []);
+    // If target is already an HTMLElement, consider it ready
+    return step.target instanceof HTMLElement;
+  });
 
-  // Listen for restart event
+  // Start tour
+  const startTour = () => {
+    const interval = setInterval(() => {
+      if (areTargetsReady()) {
+        setStepIndex(0);
+        setRun(true);
+        clearInterval(interval);
+      }
+    }, 100);
+  };
+
   useEffect(() => {
-    const handleRestart = () => {
-      localStorage.removeItem("hasSeenTour");
-      startTourFromStep(0);
-    };
+    // First-time visitors or triggered via sessionStorage
+    const hasSeenTour = localStorage.getItem("hasSeenTour");
+    const showTourFlag = sessionStorage.getItem("showTour");
 
+    if (!hasSeenTour || showTourFlag === "true") {
+      startTour();
+      localStorage.setItem("hasSeenTour", "true");
+      sessionStorage.removeItem("showTour");
+    }
+
+    // Listen for restartTour event
+    const handleRestart = () => startTour();
     window.addEventListener("restartTour", handleRestart);
     return () => window.removeEventListener("restartTour", handleRestart);
-  }, [location.pathname]);
-
-  const startTourFromStep = (index: number) => {
-    const step = steps[index];
-    if (step?.route && step.route !== location.pathname) {
-      // Navigate to homepage first
-      navigate(step.route, { replace: true });
-      setTimeout(() => {
-        setStepIndex(index);
-        setRun(true);
-      }, 300); // give homepage time to render
-    } else {
-      setStepIndex(index);
-      setRun(true);
-    }
-  };
+  }, []);
 
   const handleJoyrideCallback = (data: CallBackProps) => {
     const { status, index, type } = data;
-
     if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
       setRun(false);
       return;
     }
-
-    if (type === "step:after") {
-      const nextStep = steps[index + 1];
-
-      if (!nextStep) {
-        setRun(false); // stop on last step
-        return;
-      }
-
-      if (nextStep.route && nextStep.route !== location.pathname) {
-        navigate(nextStep.route, { replace: true });
-      }
-
-      setTimeout(() => setStepIndex(index + 1), 200);
-    }
+    if (type === "step:after") setStepIndex(index + 1);
   };
 
   return (
@@ -115,3 +100,4 @@ export default function HomeGuidedTour() {
     />
   );
 }
+
