@@ -183,7 +183,7 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                                                 onChange={(e) =>
                                                     field.onChange(e.target.checked ? "AGENT" : "USER")
                                                 }
-                                                className="accent-green-500"
+                                                className="accent-green-500 cursor-pointer"
                                             />
                                             Sign up as Agent
                                         </label>
@@ -195,7 +195,7 @@ export function RegisterForm({ className, ...props }: React.HTMLAttributes<HTMLD
                             )}
                         />
 
-                        <Button type="submit">Register</Button>
+                        <Button type="submit" className="cursor-pointer w-full">Register</Button>
                     </form>
                 </Form>
 

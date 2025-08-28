@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import HomeGuidedTour from "./HomeGuidedTour";
 
 
 
@@ -19,6 +20,7 @@ export default function CommonLayout({ children }: IProps) {
                 {children}
             </div>
             <Footer />
+            <HomeGuidedTour />
         </div>
     );
 }

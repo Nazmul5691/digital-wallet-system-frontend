@@ -99,7 +99,7 @@ export default function AgentProfile() {
 
     return (
         <div className="w-xl mx-auto p-6">
-            <Card className="shadow-md">
+            <Card className="shadow-md profile-section">
                 <CardHeader>
                     <CardTitle className="text-xl font-semibold">My Profile</CardTitle>
                 </CardHeader>

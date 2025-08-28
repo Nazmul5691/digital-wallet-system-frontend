@@ -18,10 +18,6 @@ import Logo from "@/assets/icons/Logo"
 import { getSidebarItems } from "@/utils/getSidebarItem"
 import { useUserInfoQuery } from "@/redux/features/user/user.api"
 
-// This is sample data.
-// const data = {
-//   navMain: getSidebarItems("USER")
-// }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 

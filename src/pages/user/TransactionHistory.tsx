@@ -30,19 +30,7 @@ import { formatDate } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import type { HistoryQueryParams } from "@/types";
 
-// Helper for human-friendly note text
-// const getTransactionNote = (transaction: any) => {
-//   switch (transaction.type) {
-//     case "CASH_IN":
-//       return `Cash-in of $${transaction.amount} by agent ${transaction.senderId?.name}`;
-//     case "CASH_OUT":
-//       return `Cash-out of $${transaction.amount} to agent ${transaction.receiverId?.name}`;
-//     case "SENT_MONEY":
-//       return `Sent $${transaction.amount} to ${transaction.receiverId?.name || "N/A"}`;
-//     default:
-//       return transaction.note || "N/A";
-//   }
-// };
+
 
 export default function TransactionHistory() {
   const [queryParams, setQueryParams] = useState<HistoryQueryParams>({
@@ -70,7 +58,7 @@ export default function TransactionHistory() {
   const meta = data?.meta;
 
   return (
-    <div className="p-6">
+    <div className="p-6 transactions-table">
       <Card className="shadow-lg border-0">
         <CardHeader>
           <CardTitle className="text-lg font-semibold tracking-wide">
@@ -113,7 +101,7 @@ export default function TransactionHistory() {
             <>
               {transactions.length > 0 ? (
                 <div className="overflow-x-auto rounded-lg border">
-                  <Table>
+                  <Table className="transactions-table">
                     <TableHeader>
                       <TableRow className="bg-muted/50">
                         <TableHead>Type</TableHead>

@@ -1,10 +1,24 @@
 import Logo from "@/assets/icons/Logo";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { Button } from "../ui/button";
 
 export default function Footer() {
+
+  const navigate = useNavigate();
+
+  const handleRestartTour = () => {
+    // Navigate to homepage first
+    navigate("/", { replace: true });
+
+    // Dispatch the restartTour event after a small delay to ensure HomeGuidedTour is mounted
+    setTimeout(() => {
+      window.dispatchEvent(new Event("restartTour"));
+    }, 100);
+  };
+
   return (
     <footer className="bg-gray-100 dark:bg-gray-900 transition-colors duration-500">
-      <div className="mx-auto container px-4 py-16 sm:px-6 space-y-12">
+      <div className="mx-auto footer-section container px-4 py-16 sm:px-6 space-y-12">
         {/* Top Grid */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Logo & Description */}
@@ -80,7 +94,13 @@ export default function Footer() {
                 <li><Link to="/#" className="hover:text-primary transition">Terms & Conditions</Link></li>
                 <li><Link to="/#" className="hover:text-primary transition">Refund Policy</Link></li>
                 <li><Link to="/#" className="hover:text-primary transition">Security</Link></li>
+
               </ul>
+              <div className="mt-4">
+                <Button onClick={handleRestartTour} variant="outline" size="sm">
+                  Restart Guided Tour
+                </Button>
+              </div>
             </div>
           </div>
         </div>

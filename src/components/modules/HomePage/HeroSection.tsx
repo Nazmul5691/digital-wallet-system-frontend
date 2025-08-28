@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 export default function HeroBanner() {
   return (
-    <div className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] flex items-center justify-center text-center px-4 
+    <div className="relative w-full banner-section h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] flex items-center justify-center text-center px-4 
                     bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
       
       {/* Background pattern */}

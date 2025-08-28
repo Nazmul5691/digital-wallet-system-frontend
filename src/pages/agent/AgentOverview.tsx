@@ -20,8 +20,8 @@ export default function AgentOverview() {
     }
 
     return (
-        <div className="container mx-auto py-8 px-4 gap-5 grid sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-8 text-center tracking-tight">Agent Dashboard</h1>
+        <div className="dashboard-cards container mx-auto py-8 px-4 gap-5 grid sm:px-6 lg:px-8">
+            <h1 className=" text-4xl font-extrabold text-gray-900 mb-8 text-center tracking-tight">Agent Dashboard</h1>
 
             {/* Top section with all three summary cards */}
             <div className="">

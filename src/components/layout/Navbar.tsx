@@ -50,7 +50,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="border-b sticky top-0 z-100 bg-white dark:bg-gray-900">
+        <header className="border-b  sticky top-0 z-100 bg-white dark:bg-gray-900">
             <div className="container mx-auto px-4 flex h-16 items-center justify-between gap-4 ">
                 {/* Left side */}
                 <div className="flex items-center gap-2">
@@ -107,7 +107,7 @@ export default function Navbar() {
                         </PopoverContent>
                     </Popover>
                     {/* Main nav */}
-                    <div className="flex items-center gap-6 ">
+                    <div className="nav-items flex items-center gap-6 ">
                         <div>
                             <div className="flex items-center gap-2 text-primary hover:text-primary/90">
                                 <Logo />
@@ -149,10 +149,10 @@ export default function Navbar() {
                     </div>
                 </div>
                 {/* Right side */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 theme-change-login">
                     <ModeToggle />
                     {
-                        data?.data?.email && (<Button onClick={handleLogout} variant="outline" className="text-sm">
+                        data?.data?.email && (<Button onClick={handleLogout} variant="outline" className="text-sm ">
                             Logout
                         </Button>)
                     }
