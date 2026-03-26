@@ -192,14 +192,15 @@ export default function Navbar() {
                     <ModeToggle />
 
                     {/* Authenticated: show Logout */}
+                    {/* Authenticated: show Logout */}
                     {data?.data?.email && (
                         <button
                             onClick={handleLogout}
                             className="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-90 active:scale-95"
                             style={{
                                 color: "#ffffff",
-                                background: "linear-gradient(135deg, #6c63ff 0%, #8b5cf6 50%, #a855f7 100%)",
-                                boxShadow: "0 0 20px rgba(139, 92, 246, 0.35)",
+                                background: "linear-gradient(135deg, #6c3fc5 0%, #9b3a8a 50%, #c2406e 100%)",
+                                boxShadow: "0 0 20px rgba(180, 60, 120, 0.4)",
                             }}
                         >
                             Logout
@@ -213,8 +214,8 @@ export default function Navbar() {
                             className="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:opacity-90 active:scale-95"
                             style={{
                                 color: "#ffffff",
-                                background: "linear-gradient(135deg, #6c63ff 0%, #8b5cf6 50%, #a855f7 100%)",
-                                boxShadow: "0 0 20px rgba(139, 92, 246, 0.35)",
+                                background: "linear-gradient(135deg, #6c3fc5 0%, #9b3a8a 50%, #c2406e 100%)",
+                                boxShadow: "0 0 20px rgba(180, 60, 120, 0.4)",
                             }}
                         >
                             Get Started
