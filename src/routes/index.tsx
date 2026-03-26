@@ -17,7 +17,6 @@ import ContactUs from "@/pages/ContactUs";
 import FAQ from "@/pages/FAQ";
 import About from "@/components/modules/aboutUs/About";
 import GlobalErrorPage from "@/components/layout/GlobalErrorPage";
-import Settings from "@/components/modules/HomePage/Settings";
 
 
 export const router = createBrowserRouter([
@@ -96,8 +95,8 @@ export const router = createBrowserRouter([
         path: "*",
         element: <GlobalErrorPage />,
     },
-    {
-        path: "/settings",
-        Component: Settings
-    },
+    // {
+    //     path: "/settings",
+    //     Component: Settings
+    // },
 ])

@@ -8,7 +8,6 @@ import Withdraw from "@/pages/user/Withdraw";
 import type { ISidebarItems } from "@/types";
 import Dashboard from "@/pages/user/Dashboard";
 import Homepage from "@/pages/Homepage";
-import Setting from "@/pages/Setting";
 
 export const userSidebarItems: ISidebarItems[] = [
     {
@@ -54,11 +53,11 @@ export const userSidebarItems: ISidebarItems[] = [
                 url: "../",
                 component: Homepage,
             },
-            {
-                title: "Settings",
-                url: "/user/settings",
-                component: Setting,
-            }
+            // {
+            //     title: "Settings",
+            //     url: "/user/settings",
+            //     component: Setting,
+            // }
         ],
     }
 ]

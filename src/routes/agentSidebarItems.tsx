@@ -4,7 +4,6 @@ import AgentTransactions from "@/pages/agent/AgentTransactions";
 import CashIn from "@/pages/agent/CashIn";
 import CashOut from "@/pages/agent/CashOut";
 import Homepage from "@/pages/Homepage";
-import Setting from "@/pages/Setting";
 import type { ISidebarItems } from "@/types";
 
 
@@ -48,11 +47,11 @@ export const agentSidebarItems: ISidebarItems[] = [
                 url: "../",
                 component: Homepage,
             },
-            {
-                title: "Settings",
-                url: "/agent/settings",
-                component: Setting,
-            }
+            // {
+            //     title: "Settings",
+            //     url: "/agent/settings",
+            //     component: Setting,
+            // }
         ],
 
     }
