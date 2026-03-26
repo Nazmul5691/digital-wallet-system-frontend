@@ -1,48 +1,137 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { Link } from "react-router"
+import { Button } from "@/components/ui/button"
 
 export default function HeroBanner() {
   return (
-    <div className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] flex items-center justify-center text-center px-4 
-                    bg-gradient-to-r from-blue-600 to-purple-600 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
-      
-      {/* Background pattern */}
-      <div className="absolute inset-0 z-0">
-        <svg
-          className="absolute inset-0 h-full w-full opacity-10 dark:opacity-20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <pattern id="pattern-circles" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <circle className="text-blue-500 dark:text-white" cx="20" cy="20" r="1" fill="currentColor" />
-          </pattern>
-          <rect className="w-full h-full text-blue-500 dark:text-white" fill="url(#pattern-circles)" />
-        </svg>
-      </div>
+    <section
+      className="relative overflow-hidden min-h-[520px] flex items-center"
+      style={{
+        background: "radial-gradient(ellipse 80% 80% at 60% 50%, #2d0a5e 0%, #1a0535 40%, #0d0118 100%)",
+      }}
+    >
+      {/* Decorative glow top */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "-30px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "300px",
+          height: "120px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #a855f7 0%, transparent 70%)",
+          filter: "blur(24px)",
+          opacity: 0.3,
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-2 sm:px-4">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight 
-                       text-white dark:text-gray-100 transition-colors duration-500">
-          Your Money, Your Way.
-          <br />
-          Simple, Secure, Swift.
-        </h1>
-        <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto 
-                      text-white/90 dark:text-gray-300 transition-colors duration-500">
-          Manage your finances, send money to friends, and pay bills instantly with our all-in-one digital wallet.
-        </p>
+      <div className="container mx-auto px-6 lg:px-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-16">
 
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0">
-          <Button asChild className="bg-white text-blue-600 hover:bg-gray-100 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200
-                                     transition-transform transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-6 rounded-full font-semibold text-base sm:text-lg shadow-lg w-full sm:w-auto">
-            <Link to="/register">Get Started</Link>
-          </Button>
-          <Button asChild variant="outline" className="border-white bg-white/20 text-white hover:bg-white/30 dark:border-gray-300 dark:text-gray-200
-                                                     dark:hover:bg-gray-700 transition-transform transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-6 rounded-full font-semibold text-base sm:text-lg shadow-lg w-full sm:w-auto">
-            <Link to="/about">Learn More</Link>
-          </Button>
+          {/* Left — Text Content */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
+            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight" style={{ color: "#ffffff" }}>
+              The Ultimate{" "}
+              <span
+                style={{
+                  background: "linear-gradient(90deg, #a855f7 0%, #c084fc 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Online Payment
+              </span>{" "}
+              Solution
+            </h1>
+
+            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+            </p>
+
+            <div>
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full px-7 py-5 text-sm font-semibold hover:bg-white/10 hover:text-white"
+                style={{
+                  color: "#ffffff",
+                  borderColor: "rgba(255,255,255,0.6)",
+                  background: "transparent",
+                }}
+              >
+                <Link to="/login">Get Started</Link>
+              </Button>
+            </div>
+
+            {/* Reviews */}
+            <div className="flex flex-col gap-2 mt-2">
+              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>
+                Over 5,000+ Reviews
+              </p>
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-3">
+                  {[
+                    "https://randomuser.me/api/portraits/women/44.jpg",
+                    "https://randomuser.me/api/portraits/men/32.jpg",
+                    "https://randomuser.me/api/portraits/women/68.jpg",
+                  ].map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt="reviewer"
+                      className="w-9 h-9 rounded-full object-cover"
+                      style={{ border: "2px solid #1a0535" }}
+                    />
+                  ))}
+                </div>
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold"
+                  style={{
+                    background: "rgba(255,255,255,0.15)",
+                    color: "#ffffff",
+                    border: "2px solid rgba(255,255,255,0.25)",
+                  }}
+                >
+                  5K+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Center — Card Image */}
+          <div className="lg:col-span-5 flex items-center justify-center">
+            <img
+              src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1774545365/ezyPay_banner_jy2g4a.png"
+              alt="Payment Cards"
+              className="w-full max-w-md object-contain"
+              style={{ filter: "drop-shadow(0 20px 60px rgba(168,85,247,0.3))" }}
+            />
+          </div>
+
+          {/* Right — Stats */}
+          <div className="lg:col-span-3 flex flex-col gap-8">
+            {[
+              { value: "93k+", label: "Satisfied user" },
+              { value: "4.9/5", label: "Client Rating" },
+              { value: "99%", label: "Secure Payments" },
+            ].map((stat) => (
+              <div key={stat.label} className="flex flex-col gap-1">
+                <span
+                  className="text-5xl font-extrabold leading-none"
+                  style={{ color: "#ffffff" }}
+                >
+                  {stat.value}
+                </span>
+                <span className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
