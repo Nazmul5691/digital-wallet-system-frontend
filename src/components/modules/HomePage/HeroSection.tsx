@@ -46,7 +46,8 @@ export default function HeroBanner() {
             </h1>
 
             <p className="text-sm leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+              The fastest and most secure way to send money, receive payments, and manage your finances.
+              Experience a seamless digital wallet designed for your everyday needs.
             </p>
 
             <div>
