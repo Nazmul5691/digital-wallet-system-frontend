@@ -30,7 +30,7 @@ export default function HeroBanner() {
 
           {/* Left — Text Content */}
           <div className="lg:col-span-4 flex flex-col gap-6">
-            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight" style={{ color: "#ffffff" }}>
+            <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight" style={{ color: "#ffffff" }}>
               The Ultimate{" "}
               <span
                 style={{
@@ -102,7 +102,7 @@ export default function HeroBanner() {
           {/* Center — Card Image */}
           <div className="lg:col-span-5 flex items-center justify-center">
             <img
-              src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1774545365/ezyPay_banner_jy2g4a.png"
+              src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1774545973/ezyPay_banner_ivd6or.png"
               alt="Payment Cards"
               className="w-full max-w-md object-contain"
               style={{ filter: "drop-shadow(0 20px 60px rgba(168,85,247,0.3))" }}
