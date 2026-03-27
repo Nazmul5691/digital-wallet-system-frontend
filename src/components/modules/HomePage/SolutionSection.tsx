@@ -46,7 +46,7 @@ export default function SolutionSection() {
         
 
             {/* Features + Text Row */}
-            <div className="container mx-auto px-6 lg:px-10 pb-16">
+            <div className="container mx-auto px-6 lg:px-10 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left — 2x2 feature cards */}
