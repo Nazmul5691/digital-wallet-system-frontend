@@ -7,13 +7,6 @@ import {
     Banknote,
 } from "lucide-react"
 
-const partners = [
-    { id: 1, src: "https://logoipsum.com/assets/svg/logo-1.svg", alt: "Logoipsum" },
-    { id: 2, src: "https://logoipsum.com/assets/svg/logo-2.svg", alt: "Logoipsum" },
-    { id: 3, src: "https://logoipsum.com/assets/svg/logo-3.svg", alt: "Logoipsum" },
-    { id: 4, src: "https://logoipsum.com/assets/svg/logo-4.svg", alt: "Logoipsum" },
-    { id: 5, src: "https://logoipsum.com/assets/svg/logo-5.svg", alt: "Logo ipsum" },
-]
 
 const features = [
     {
@@ -50,30 +43,7 @@ export default function SolutionSection() {
                 background: "linear-gradient(180deg, #0d0118 0%, #0a0a1a 100%)",
             }}
         >
-            {/* Partners Row */}
-            <div className="container mx-auto px-6 lg:px-10 pt-12 pb-10">
-                {/* Section title with lines */}
-                <div className="flex items-center justify-center gap-4 mb-8">
-                    <div className="h-px flex-1 max-w-[180px]" style={{ background: "rgba(255,255,255,0.15)" }} />
-                    <span className="text-sm font-medium whitespace-nowrap" style={{ color: "rgba(255,255,255,0.7)" }}>
-                        Our Solution Partners
-                    </span>
-                    <div className="h-px flex-1 max-w-[180px]" style={{ background: "rgba(255,255,255,0.15)" }} />
-                </div>
-
-                {/* Partner logos */}
-                <div className="flex flex-wrap items-center justify-center gap-10 lg:gap-16">
-                    {partners.map((p) => (
-                        <img
-                            key={p.id}
-                            src={p.src}
-                            alt={p.alt}
-                            className="h-7 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                            style={{ filter: "brightness(0) invert(1)" }}
-                        />
-                    ))}
-                </div>
-            </div>
+        
 
             {/* Features + Text Row */}
             <div className="container mx-auto px-6 lg:px-10 pb-16">
