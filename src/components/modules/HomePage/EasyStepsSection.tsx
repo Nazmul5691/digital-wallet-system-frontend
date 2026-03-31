@@ -72,7 +72,7 @@ export default function EasyStepsSection() {
                     {/* Phone image */}
                     <div className="relative z-[2]">
                         <img
-                            src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1774617470/cashless_fsdyvd.jpg"
+                            src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1774617982/mobile_q30fwd.png"
                             alt="App mockup"
                             className="w-[220px] h-[420px] object-cover object-top rounded-[28px] block shadow-[0_30px_80px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]"
                         />

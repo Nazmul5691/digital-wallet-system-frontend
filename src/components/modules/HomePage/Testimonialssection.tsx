@@ -43,7 +43,7 @@ export default function TestimonialsSection() {
             <div className="container mx-auto px-8 flex items-center gap-16">
 
                 {/* LEFT */}
-                <div className="flex flex-col gap-6 flex-1 max-w-[420px] z-10">
+                <div className="flex flex-col gap-6 flex-1 max-w-[600px] z-10">
 
                     <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight">
                         What Customers say<br />About Us
