@@ -43,28 +43,28 @@ export default function SolutionSection() {
                 background: "linear-gradient(180deg, #0d0118 0%, #0a0a1a 100%)",
             }}
         >
-        
 
             {/* Features + Text Row */}
-            <div className="container mx-auto px-6 lg:px-10 py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="container mx-auto px-6 lg:px-10 py-10 md:py-14 lg:py-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
 
                     {/* Left — 2x2 feature cards */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-3 md:gap-4 lg:gap-4 order-2 md:order-2 lg:order-1">
                         {features.map(({ icon: Icon, title, desc, gradient }) => (
                             <div
                                 key={title}
-                                className="rounded-2xl p-5 flex flex-col gap-3 cursor-pointer transition-transform duration-200 hover:-translate-y-1"
+                                className="rounded-2xl p-4 md:p-5 lg:p-5 flex flex-col gap-2 md:gap-3 lg:gap-3 cursor-pointer transition-transform duration-200 hover:-translate-y-1"
                                 style={{ background: gradient }}
                             >
                                 <div
-                                    className="w-9 h-9 rounded-lg flex items-center justify-center"
+                                    className="w-8 h-8 md:w-9 md:h-9 lg:w-9 lg:h-9 rounded-lg flex items-center justify-center"
                                     style={{ background: "rgba(255,255,255,0.15)" }}
                                 >
-                                    <Icon size={18} color="#ffffff" />
+                                    <Icon size={16} color="#ffffff" className="md:hidden" />
+                                    <Icon size={18} color="#ffffff" className="hidden md:block" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold mb-1" style={{ color: "#ffffff" }}>
+                                    <p className="text-xs md:text-sm font-bold mb-1" style={{ color: "#ffffff" }}>
                                         {title}
                                     </p>
                                     <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
@@ -76,8 +76,8 @@ export default function SolutionSection() {
                     </div>
 
                     {/* Right — heading + text + CTA */}
-                    <div className="flex flex-col gap-5">
-                        <h2 className="text-4xl lg:text-5xl font-extrabold leading-tight" style={{ color: "#ffffff" }}>
+                    <div className="flex flex-col gap-4 md:gap-5 lg:gap-5 text-center md:text-left lg:text-left items-center md:items-start lg:items-start order-1 md:order-1 lg:order-2">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight" style={{ color: "#ffffff" }}>
                             Your Money, Your Way,{" "}
                             <span
                                 style={{
@@ -91,7 +91,7 @@ export default function SolutionSection() {
                             </span>
                         </h2>
 
-                        <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+                        <p className="text-sm leading-relaxed max-w-lg md:max-w-none" style={{ color: "rgba(255,255,255,0.55)" }}>
                             EzyPay is your all-in-one digital wallet — send money, receive payments,
                             cash in or out through agents, and manage your finances from anywhere.
                             Fast, secure, and built for everyone. Whether you're paying bills or
@@ -119,3 +119,4 @@ export default function SolutionSection() {
         </section>
     )
 }
+

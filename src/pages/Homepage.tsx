@@ -14,8 +14,8 @@ export default function Homepage() {
       <SolutionSection />
       <EasyStepsSection />
       <BankingSolutionSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <TestimonialsSection /> 
+     <FAQSection />
     </div>
   );
 }

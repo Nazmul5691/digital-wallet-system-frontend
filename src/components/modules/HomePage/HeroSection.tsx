@@ -1,3 +1,4 @@
+// import { Link } from "react-router"
 import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
 
@@ -26,11 +27,11 @@ export default function HeroBanner() {
       />
 
       <div className="container mx-auto px-6 lg:px-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-10 md:py-14 lg:py-16">
 
           {/* Left — Text Content */}
-          <div className="lg:col-span-4 flex flex-col gap-6">
-            <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight" style={{ color: "#ffffff" }}>
+          <div className="lg:col-span-4 flex flex-col gap-6 text-center md:text-left items-center md:items-start lg:items-start lg:text-left">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight" style={{ color: "#ffffff" }}>
               The Ultimate{" "}
               <span
                 style={{
@@ -45,7 +46,7 @@ export default function HeroBanner() {
               Solution
             </h1>
 
-            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+            <p className="text-sm leading-relaxed max-w-sm md:max-w-md lg:max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
               The fastest and most secure way to send money, receive payments, and manage your finances.
               Experience a seamless digital wallet designed for your everyday needs.
             </p>
@@ -66,7 +67,7 @@ export default function HeroBanner() {
             </div>
 
             {/* Reviews */}
-            <div className="flex flex-col gap-2 mt-2">
+            <div className="flex flex-col gap-2 mt-2 items-center md:items-start lg:items-start">
               <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>
                 Over 5,000+ Reviews
               </p>
@@ -101,30 +102,30 @@ export default function HeroBanner() {
           </div>
 
           {/* Center — Card Image */}
-          <div className="lg:col-span-5 flex items-center justify-center">
+          <div className="lg:col-span-5 flex items-center justify-center order-first md:order-none lg:order-none">
             <img
               src="https://res.cloudinary.com/dh3ej57qw/image/upload/v1774545973/ezyPay_banner_ivd6or.png"
               alt="Payment Cards"
-              className="w-full max-w-md object-contain"
+              className="w-full max-w-xs md:max-w-sm lg:max-w-md object-contain"
               style={{ filter: "drop-shadow(0 20px 60px rgba(168,85,247,0.3))" }}
             />
           </div>
 
           {/* Right — Stats */}
-          <div className="lg:col-span-3 flex flex-col gap-8">
+          <div className="lg:col-span-3 flex flex-row md:flex-row lg:flex-col justify-center md:justify-around lg:justify-start gap-6 md:gap-8 lg:gap-8">
             {[
               { value: "93k+", label: "Satisfied user" },
               { value: "4.9/5", label: "Client Rating" },
               { value: "99%", label: "Secure Payments" },
             ].map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1">
+              <div key={stat.label} className="flex flex-col gap-1 text-center md:text-center lg:text-left items-center md:items-center lg:items-start">
                 <span
-                  className="text-5xl font-extrabold leading-none"
+                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-none"
                   style={{ color: "#ffffff" }}
                 >
                   {stat.value}
                 </span>
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                <span className="text-xs md:text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
                   {stat.label}
                 </span>
               </div>
@@ -136,3 +137,5 @@ export default function HeroBanner() {
     </section>
   )
 }
+
+

@@ -7,15 +7,12 @@ import Logo from "@/assets/icons/Logo"
 const quickLinks = [
     { label: "Contact Us", href: "/contact" },
     { label: "FAQs", href: "/faq" },
-    { label: "Blog", href: "/blog" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Home", href: "/" },
+    { label: "Home", href: "/" }
 ]
 
 const navigationLinks = [
     { label: "Services", href: "/features" },
     { label: "About Us", href: "/about" },
-    { label: "Pages", href: "/" },
     { label: "404", href: "/404" },
 ]
 
@@ -44,19 +41,18 @@ export default function Footer() {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
 
             {/* Main footer content */}
-            <div className="relative z-10 container mx-auto px-8 py-14">
-                <div className="grid grid-cols-5 gap-10">
+            <div className="relative z-10 container mx-auto px-6 md:px-8 py-10 md:py-14">
+                {/* Responsive Grid: 1 col on mobile, 2 on md, 5 on lg */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
                     {/* Col 1 — Logo + Newsletter */}
-                    <div className="col-span-1 flex flex-col gap-5">
-                        {/* Logo */}
+                    <div className="col-span-1 md:col-span-2 lg:col-span-1 flex flex-col gap-5">
                         <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
                             <Logo />
                             <span className="text-xl font-bold tracking-tight text-white">EzyPay</span>
                         </Link>
 
-                        {/* Newsletter */}
-                        <div className="flex flex-col gap-2.5">
+                        <div className="flex flex-col gap-2.5 max-w-sm">
                             <p className="text-white text-sm font-semibold">Newsletters</p>
                             <Input
                                 type="email"
@@ -138,16 +134,19 @@ export default function Footer() {
 
             {/* Bottom bar */}
             <div className="relative z-10 border-t border-white/8">
-                <div className="container mx-auto px-8 py-4 flex items-center justify-between">
-                    <p className="text-white/40 text-xs">Copyright © 2024 All rights reserved</p>
-                    <Link to="/privacy" className="text-white/40 text-xs hover:text-violet-400 transition-colors">
-                        Privacy Policy
-                    </Link>
-                    <Link to="/terms" className="text-white/40 text-xs hover:text-violet-400 transition-colors">
-                        Term Of Services
-                    </Link>
+                <div className="container mx-auto px-6 md:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p className="text-white/40 text-xs order-3 md:order-none">Copyright © 2024 All rights reserved</p>
+                    <div className="flex items-center gap-6">
+                        <Link to="/privacy" className="text-white/40 text-xs hover:text-violet-400 transition-colors">
+                            Privacy Policy
+                        </Link>
+                        <Link to="/terms" className="text-white/40 text-xs hover:text-violet-400 transition-colors">
+                            Term Of Services
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>
     )
 }
+
