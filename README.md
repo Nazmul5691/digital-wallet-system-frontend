@@ -160,27 +160,6 @@ src/
 
 ---
 
-
-
-## 🔑 Credentials for Testing
-
-**Admin:**
-
-- Email: `admin@gmail.com`
-- Password: `Mir1234@`
-
-**Agent:**
-
-- Email: `agent@gmail.com`
-- Password: `Mir1234@`
-
-**User:**
-
-- Email: `nazmulislam5691@gmail.com`
-- Password: `Mir1234@`
-
----
-
 ## ⚡ Notes
 
 - Ensure backend is deployed and CORS is configured to allow frontend domain.
